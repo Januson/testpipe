@@ -4,7 +4,10 @@ pipeline {
     parameters {
         string(name: 'version', description: 'Upstream candlepin version to deploy.')
     }
-
+    environment {
+        CANDLEPIN_PREFIX = 'candlepin-'
+        CANDLEPIN_VERSION = ${params.version#$CANDLEPIN_PREFIX}
+    }
     stages {
         stage('Create build') {
             steps {
@@ -12,8 +15,9 @@ pipeline {
                 sh "git status"
                 sh "git checkout master"
                 sh "git status"
-                sh "git checkout -b ojanus/master"
+                sh "git checkout -b ${params.version}"
                 sh "git status"
+                sh "sed -i 's/${candlepin.version.placeholder}/$CANDLEPIN_VERSION/g' pom.xml"
                 echo 'TODO: ENT-1779 Creating branch...'
                 echo 'TODO: ENT-1779 Updating branch to new build...'
                 echo 'TODO: ENT-1779 Building...'
