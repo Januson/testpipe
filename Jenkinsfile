@@ -6,14 +6,13 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Create build') {
             steps {
                 echo "Build ${params.version}"
+                sh "git status"
+                sh "git checkout master"
+                sh "git status"
+                sh "git checkout -b ojanus/master"
                 sh "git status"
                 echo 'TODO: ENT-1779 Creating branch...'
                 echo 'TODO: ENT-1779 Updating branch to new build...'
