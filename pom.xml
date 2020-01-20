@@ -1,0 +1,3 @@
+<pom>
+        <candlepin.version>${candlepin.version.placeholder}</candlepin.version>
+</pom>
