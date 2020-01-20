@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         CANDLEPIN_PREFIX = 'candlepin-'
-        CANDLEPIN_VERSION = ${params.version#$CANDLEPIN_PREFIX}
+//         CANDLEPIN_VERSION = ${params.version#$CANDLEPIN_PREFIX}
     }
     stages {
         stage('Create build') {
@@ -17,7 +17,7 @@ pipeline {
                 sh "git status"
                 sh "git checkout -b ${params.version}"
                 sh "git status"
-                sh "sed -i 's/${candlepin.version.placeholder}/$CANDLEPIN_VERSION/g' pom.xml"
+                sh "sed -i 's/${candlepin.version.placeholder}/${params.version#$CANDLEPIN_PREFIX}/g' pom.xml"
                 echo 'TODO: ENT-1779 Creating branch...'
                 echo 'TODO: ENT-1779 Updating branch to new build...'
                 echo 'TODO: ENT-1779 Building...'
