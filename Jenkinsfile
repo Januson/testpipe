@@ -9,6 +9,7 @@ pipeline {
         stage('Create build') {
             steps {
                 echo "Build ${params.version}"
+                sh "git status"
                 echo 'TODO: ENT-1779 Creating branch...'
                 echo 'TODO: ENT-1779 Updating branch to new build...'
                 echo 'TODO: ENT-1779 Building...'
