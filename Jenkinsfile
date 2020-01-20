@@ -6,6 +6,9 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            checkout scm
+        }
         stage('Create build') {
             steps {
                 echo "Build ${params.version}"
