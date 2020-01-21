@@ -25,6 +25,6 @@ HOSTED_VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" <<< $(head -n 20 pom.xml))
 TAG="${CANDLEPIN_VERSION}_${HOSTED_VERSION}"
 git tag $TAG
 
-git push --follow-tags origin $BRANCH_NAME
+git push --tags origin $BRANCH_NAME
 
 exit 0
