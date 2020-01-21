@@ -11,13 +11,7 @@ pipeline {
         stage('Create build') {
             steps {
                 echo "Build ${params.version}"
-                sh "git status"
-                sh "git checkout master"
-                sh "git status"
-                sh "git checkout -b ${params.version}"
-                sh "git status"
-                sh "CANDLEPIN_VERSION=$(echo '${params.version}' | sed 's/$CANDLEPIN_PREFIX//')"
-                sh "sed -i 's/${candlepin.version.placeholder}/$CANDLEPIN_VERSION/g' pom.xml"
+                sh "./jenkins/create_branch.sh"
                 echo 'TODO: ENT-1779 Creating branch...'
                 echo 'TODO: ENT-1779 Updating branch to new build...'
                 echo 'TODO: ENT-1779 Building...'
