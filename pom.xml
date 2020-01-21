@@ -1,6 +1,6 @@
 <pom>
         <version>2.7.3</version>
         <properties>
-                <candlepin.version>${candlepin.version.placeholder}</candlepin.version>
+                <candlepin.version>1.2.7</candlepin.version>
         </properties>
 </pom>
