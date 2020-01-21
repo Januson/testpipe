@@ -9,10 +9,11 @@ fi
 
 CANDLEPIN_PREFIX='candlepin-'
 
+BRANCH_NAME=$VERSION
 CANDLEPIN_VERSION=$(echo "$VERSION" | sed "s/$CANDLEPIN_PREFIX//")
 
 git checkout master
-git checkout -b $CANDLEPIN_VERSION
+git checkout -b $BRANCH_NAME
 
 VERSION=$(echo "$CANDLEPIN_VERSION" | sed "s/$CANDLEPIN_PREFIX//")
 sed -i "s/\${candlepin.version.placeholder}/$VERSION/g" pom.xml
@@ -24,5 +25,6 @@ HOSTED_VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" <<< $(head -n 20 pom.xml))
 TAG="${CANDLEPIN_VERSION}_${HOSTED_VERSION}"
 git tag $TAG
 
-BRANCH_NAME=$VERSION
 git push --follow-tags origin $BRANCH_NAME
+
+exit 0
