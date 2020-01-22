@@ -11,7 +11,7 @@ pipeline {
         stage('Create build') {
             steps {
                 echo "Build ${params.version}"
-                sh "./jenkins/create_branch.sh"
+                sh "./jenkins/create_build_branch.sh"
                 echo 'TODO: ENT-1779 Creating branch...'
                 echo 'TODO: ENT-1779 Updating branch to new build...'
                 echo 'TODO: ENT-1779 Building...'
